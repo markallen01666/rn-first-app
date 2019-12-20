@@ -1,10 +1,32 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function App() {
+  const [outputText, setOutputText] = useState("My first React Native app!");
+  const [textChange, setTextChange] = useState(false);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>{outputText}</Text>
+      <Button
+        title="Change Text"
+        onPress={() => {
+          if (!textChange) {
+            setOutputText("The text changed");
+          } else {
+            setOutputText("The text changed again");
+          }
+          setTextChange(!textChange);
+        }}
+      />
+      <Text>textChange: {textChange.toString()}</Text>
+      <Button
+        title="Reset"
+        onPress={() => {
+          setOutputText("My first React Native app!");
+          setTextChange(false);
+        }}
+      />
     </View>
   );
 }
@@ -12,8 +34,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
