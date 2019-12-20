@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
+const styling = StyleSheet.create({
+  textMargins: {
+    marginTop: 10,
+    marginBottom: 10
+  }
+});
+
 export default function App() {
   const [outputText, setOutputText] = useState("My first React Native app!");
   const [textChange, setTextChange] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Text>{outputText}</Text>
+      <Text style={styling.textMargins}>{outputText}</Text>
       <Button
         title="Change Text"
         onPress={() => {
@@ -19,7 +26,9 @@ export default function App() {
           setTextChange(!textChange);
         }}
       />
-      <Text>textChange: {textChange.toString()}</Text>
+      <Text style={styling.textMargins}>
+        textChange value: {textChange.toString()}
+      </Text>
       <Button
         title="Reset"
         onPress={() => {
